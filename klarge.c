@@ -1,6 +1,6 @@
 #include<stdio.h>
 int i,j,temp,max;
-int ksmallest(int arr[],int n,int k)
+int klarge(int arr[],int n,int k)
 {
 	for(i=0;i<k;i++)
 	{
@@ -33,7 +33,7 @@ for(i=0;i<n;i++)
 
 printf("enter the kth ele");
 scanf("%d",&k);
-n2=ksmallest(arr,n,k);
+n2=klarge(arr,n,k);
 printf("\nthe kth small ele is ");
 printf("%d",n2);
 }
