@@ -1,5 +1,5 @@
 #include<stdio.h>
-int arr[20];       
+int arr[200];       
 
 int main()
 {
@@ -7,9 +7,9 @@ int main()
   
   printf("Enter the size of array\n");  
   scanf("%d",&n);
-  printf("Enter the elements:");
+  
   for(i=0;i<n;i++)
-    scanf("%d",&arr[i]);
+    arr[i]=rand()%1000;
   
   x=merge_sort(arr,0,n-1);  
   
@@ -40,7 +40,7 @@ int merge_sort(int arr[],int low,int high)
 
 int merge(int arr[],int l,int m,int h)
 {
-  int arr1[10],arr2[10],count=0;;  
+  int arr1[100],arr2[100],count=0;;  
   int n1,n2,i,j,k;
   n1=m-l+1;
   n2=h-m;
