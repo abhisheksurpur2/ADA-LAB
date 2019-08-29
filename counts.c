@@ -25,12 +25,12 @@ int ksmall(int a[],int n)
 void main()
 {
 	int k,y,n,i;
-	int a[10];
+	int a[100];
 	printf("enter the no of elements  :");
 	scanf("%d",&n);
 	printf("enter the array elements :");
 	for(i=0;i<n;i++)
-		scanf("%d",&a[i]);
+		a[i]=rand()%1000;
 	printf(" no of comparisions=%d",ksmall(a,n));
 }
 
