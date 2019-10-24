@@ -1,53 +1,44 @@
 #include<iostream>
-#include<cstring> 
-using namespace std; 
-  
-int max(int a, int b);  
-  
-
-int lcs( char *X, char *Y, int m, int n )  
-{  
-    int L[m + 1][n + 1];  
-    int i, j;  
-      
-    
-    for (i = 0; i <= m; i++)  
-    {  
-        for (j = 0; j <= n; j++)  
-        {  
-        if (i == 0 || j == 0)  
-            L[i][j] = 0;  
-      
-        else if (X[i - 1] == Y[j - 1])  
-            L[i][j] = L[i - 1][j - 1] + 1;  
-      
-        else
-            L[i][j] = max(L[i - 1][j], L[i][j - 1]);  
-        }  
-    }  
-          
-   
-    
-    return L[m][n];  
-}  
-  
-
-int max(int a, int b)  
-{  
-    return (a > b)? a : b;  
-}  
-  
-
-int main()  
-{  
-    char X[] = "AGGTAB";  
-    char Y[] = "GXTXAYB";  
-      
-    int m = strlen(X);  
-    int n = strlen(Y);  
-      
-    cout << "Length of LCS is " 
-         << lcs( X, Y, m, n );  
-      
-    return 0;  
-}  
+using namespace std;
+void LongestSubsequence(string a, string b){
+	int n,m;
+	n = a.size();
+	m = b.size();
+	int table[n+1][m+1];
+	for(int i=0;i<=n;i++){
+		for(int j=0;j<=m;j++){
+			if(i==0||j==0)
+				table[i][j] = 0;
+			else if(a[i-1] == b[j-1]){
+				table[i][j] = table[i-1][j-1] + 1;
+			}
+			else{
+				table[i][j] = max(table[i-1][j], table[i][j-1]);
+			}
+		}
+	}
+	cout<<table[n][m]<<endl;
+	int len = table[n][m];
+	char subsequence[len+1];
+	subsequence[len] = '\0';
+	int i=n, j=m;
+	while(i>0 && j>0){
+		if(a[i-1]==b[j-1]){
+			subsequence[len-1] = a[i-1];
+			i--;
+			j--;
+			len--;
+		}
+		else if(table[i-1][j]>=table[i][j-1])
+			i--;
+		else
+			j--;
+	}
+	cout<<subsequence<<endl;
+	
+}
+int main(){
+	string a, b;
+	cin>>a>>b;
+	LongestSubsequence(a,b);
+}
