@@ -5,6 +5,7 @@
 #define ROW 5 
 #define COL 5 
   
+//this uses BFS
 
 int isSafe(int M[][COL], int row, int col, bool visited[][COL]) 
 { 
